@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OBJKT® — Objects, Engineered.</title>
+<meta name="description" content="OBJKT is a fictional D2C tech-objects store. A front-end demo: hero, product grid, quick view, working cart and mock checkout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23141412'/><circle cx='50' cy='50' r='22' fill='%23ff4d00'/></svg>">
+</head>
+<body>
+
+<!-- ══════════ MARQUEE ══════════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="nav">
+  <a class="nav-brand" href="#/" data-route>OBJKT<sup>®</sup></a>
+  <nav class="nav-links">
+    <a href="#grid" class="nav-link" data-scroll>Shop</a>
+    <a href="#story" class="nav-link" data-scroll>Story</a>
+    <a href="#faq" class="nav-link" data-scroll>FAQ</a>
+  </nav>
+  <button class="nav-cart" id="cartOpen" type="button">
+    <span class="nav-cart-label">Cart</span>
+    <span class="nav-cart-count" id="cartCount">0</span>
+  </button>
+</header>
+
+<main id="view-home">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">EST. 2026 — DESIGNED EVERYWHERE, MADE ONCE</p>
+      <h1 class="hero-title">
+        <span class="reveal">Objects,</span>
+        <span class="reveal"><em>engineered</em><span class="accent-dot">.</span></span>
+      </h1>
+      <p class="hero-sub reveal">Eight everyday tools, stripped to their essentials and built like they matter. No noise, no gimmicks — just good objects.</p>
+      <div class="hero-cta reveal">
+        <a href="#grid" class="btn btn-solid" data-scroll>Shop the lineup</a>
+        <a href="#story" class="btn btn-ghost" data-scroll>Our story</a>
+      </div>
+      <div class="hero-meta reveal">
+        <span><b>08</b> objects</span>
+        <span><b>02 yr</b> warranty</span>
+        <span><b>4.9</b> avg rating</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <figure class="hero-frame">
+        <img src="hero.jpg" alt="OBJKT Tactile 75 keyboard floating over a bone-white studio background">
+      </figure>
+      <figcaption class="hero-tag mono">001 — TACTILE 75 / CREAM</figcaption>
+    </div>
+  </section>
+
+  <!-- ══════════ GRID ══════════ -->
+  <section class="section" id="grid">
+    <div class="section-head">
+      <h2 class="section-title">The <em>lineup</em></h2>
+      <p class="section-note mono" id="gridCount"></p>
+    </div>
+    <div class="grid" id="productGrid"></div>
+  </section>
+
+  <!-- ══════════ STORY / MANIFESTO ══════════ -->
+  <section class="story" id="story">
+    <p class="story-kicker mono reveal">MANIFESTO — 03 PRINCIPLES</p>
+    <h2 class="story-line reveal">We make <em>fewer</em> things,<br>so each one can be <em>better</em>.</h2>
+    <div class="principles">
+      <article class="principle reveal">
+        <span class="principle-num mono">01</span>
+        <h3>Honest materials</h3>
+        <p>Aluminum, fabric, glass. If it can't age gracefully, it doesn't ship.</p>
+      </article>
+      <article class="principle reveal">
+        <span class="principle-num mono">02</span>
+        <h3>Repair over replace</h3>
+        <p>Every object opens with a screwdriver, not a heat gun. Spare parts, forever.</p>
+      </article>
+      <article class="principle reveal">
+        <span class="principle-num mono">03</span>
+        <h3>One of each</h3>
+        <p>One speaker. One lamp. One watch. We'd rather be right than be big.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ FAQ ══════════ -->
+  <section class="section faq" id="faq">
+    <div class="section-head">
+      <h2 class="section-title">Fine <em>print</em></h2>
+    </div>
+    <div class="faq-list" id="faqList">
+      <details class="faq-item">
+        <summary>Shipping<span class="faq-icon">+</span></summary>
+        <p>Free worldwide shipping on orders over $150. Under that, a flat $12. Everything leaves the warehouse within 48 hours.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Returns<span class="faq-icon">+</span></summary>
+        <p>30 days, no questions. If an object doesn't earn its place on your desk, send it back on us.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Warranty<span class="faq-icon">+</span></summary>
+        <p>Two years on everything, batteries included. Register nothing; your order email is the warranty.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this a real store?<span class="faq-icon">+</span></summary>
+        <p>No — OBJKT is a front-end design demo. The cart and checkout are fully interactive, but no payment is processed and nothing ships.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ══════════ NEWSLETTER ══════════ -->
+  <section class="newsletter">
+    <h2 class="newsletter-title reveal">One email a month.<br><em>Only when it matters.</em></h2>
+    <form class="newsletter-form reveal" id="newsletterForm" novalidate>
+      <input type="email" id="newsletterEmail" placeholder="you@example.com" autocomplete="email" required>
+      <button class="btn btn-solid" type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter-note mono" id="newsletterNote">NO SPAM. UNSUBSCRIBE ANYTIME.</p>
+  </section>
+
+</main>
+
+<!-- ══════════ CHECKOUT VIEW ══════════ -->
+<main id="view-checkout" hidden>
+  <section class="checkout">
+    <button class="checkout-back mono" id="checkoutBack" type="button">← BACK TO SHOP</button>
+    <h2 class="checkout-title">Check<em>out</em></h2>
+    <div class="checkout-cols">
+      <form class="checkout-form" id="checkoutForm" novalidate>
+        <fieldset>
+          <legend class="mono">01 — CONTACT</legend>
+          <label>Email
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend class="mono">02 — SHIPPING</legend>
+          <div class="field-row">
+            <label>First name<input type="text" name="firstName" placeholder="Ada" autocomplete="given-name" required></label>
+            <label>Last name<input type="text" name="lastName" placeholder="Lovelace" autocomplete="family-name" required></label>
+          </div>
+          <label>Address<input type="text" name="address" placeholder="12 Analytical Lane" autocomplete="street-address" required></label>
+          <div class="field-row">
+            <label>City<input type="text" name="city" placeholder="Cairo" autocomplete="address-level2" required></label>
+            <label>Postal code<input type="text" name="zip" placeholder="11511" autocomplete="postal-code" required></label>
+          </div>
+          <label>Country
+            <select name="country" required>
+              <option value="">Select…</option>
+              <option>Egypt</option><option>United Arab Emirates</option><option>Saudi Arabia</option>
+              <option>Germany</option><option>United Kingdom</option><option>United States</option><option>France</option>
+            </select>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend class="mono">03 — PAYMENT <span class="demo-pill">DEMO</span></legend>
+          <label>Card number<input type="text" name="card" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19" required></label>
+          <div class="field-row">
+            <label>Expiry<input type="text" name="expiry" inputmode="numeric" placeholder="MM/YY" maxlength="5" required></label>
+            <label>CVC<input type="text" name="cvc" inputmode="numeric" placeholder="123" maxlength="4" required></label>
+          </div>
+          <p class="checkout-hint mono">NO REAL PAYMENT IS PROCESSED. THIS IS A DESIGN DEMO.</p>
+        </fieldset>
+        <p class="checkout-error mono" id="checkoutError" hidden></p>
+        <button class="btn btn-solid btn-block" id="placeOrder" type="submit">Place order — <span id="payTotal"></span></button>
+      </form>
+      <aside class="checkout-summary" id="checkoutSummary"></aside>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════ CONFIRMATION VIEW ══════════ -->
+<main id="view-confirm" hidden>
+  <section class="confirm">
+    <p class="confirm-check">✓</p>
+    <h2 class="confirm-title">Order <em>placed</em>.</h2>
+    <p class="confirm-num mono" id="orderNum"></p>
+    <p class="confirm-copy">This is a demo, so nothing actually ships — but the cart math, validation and state handling all work. Thanks for clicking through.</p>
+    <a href="#/" class="btn btn-solid" data-route>Back to the shop</a>
+  </section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <a class="footer-brand" href="#/" data-route>OBJKT<sup>®</sup></a>
+    <div class="footer-cols">
+      <div><h4 class="mono">SHOP</h4><a href="#grid" data-scroll>All objects</a><a href="#grid" data-scroll>New arrivals</a><a href="#grid" data-scroll>Spare parts</a></div>
+      <div><h4 class="mono">COMPANY</h4><a href="#story" data-scroll>Story</a><a href="#faq" data-scroll>FAQ</a><a href="#story" data-scroll>Journal</a></div>
+      <div><h4 class="mono">SOCIAL</h4><a href="#/" data-route>Instagram</a><a href="#/" data-route>X / Twitter</a><a href="#/" data-route>Are.na</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom mono">
+    <span>© 2026 OBJKT — A DESIGN DEMO. NO REAL ORDERS.</span>
+    <span>BUILT WITH HTML / CSS / JS. NO FRAMEWORK.</span>
+  </div>
+</footer>
+
+<!-- ══════════ QUICK VIEW ══════════ -->
+<div class="qv-overlay" id="qvOverlay" hidden>
+  <div class="qv" role="dialog" aria-modal="true" aria-label="Product quick view">
+    <button class="qv-close" id="qvClose" type="button" aria-label="Close">×</button>
+    <div class="qv-media"><img id="qvImg" src="" alt=""></div>
+    <div class="qv-info">
+      <p class="mono qv-tag" id="qvTag"></p>
+      <h3 class="qv-name" id="qvName"></h3>
+      <p class="qv-price mono" id="qvPrice"></p>
+      <p class="qv-blurb" id="qvBlurb"></p>
+      <ul class="qv-specs mono" id="qvSpecs"></ul>
+      <div class="qv-actions">
+        <div class="qty">
+          <button type="button" id="qvMinus" aria-label="Decrease quantity">−</button>
+          <span id="qvQty">1</span>
+          <button type="button" id="qvPlus" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="btn btn-solid qv-add" id="qvAdd" type="button">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CART DRAWER ══════════ -->
+<div class="drawer-overlay" id="drawerOverlay" hidden>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="drawer-head">
+      <h3>Your <em>cart</em></h3>
+      <button class="drawer-close" id="cartClose" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div class="drawer-ship mono" id="shipNote"></div>
+    <div class="drawer-items" id="cartItems"></div>
+    <div class="drawer-foot" id="cartFoot">
+      <div class="totals mono">
+        <div><span>SUBTOTAL</span><span id="tSub"></span></div>
+        <div><span>SHIPPING</span><span id="tShip"></span></div>
+        <div class="totals-grand"><span>TOTAL</span><span id="tTotal"></span></div>
+      </div>
+      <button class="btn btn-solid btn-block" id="goCheckout" type="button">Checkout</button>
+    </div>
+  </aside>
+</div>
+
+<div class="toast mono" id="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
